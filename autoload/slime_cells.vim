@@ -70,6 +70,9 @@ function! slime_cells#send_cell_and_go_to_next()
 endfunction
 
 function! slime_cells#sign_on_cell_boundaries()
+  if &buftype ==# 'terminal'
+    return
+  endif
   if expand("%:p") != ""
     let cell_delimiter = slime_cells#get_delimiter()
     if cell_delimiter == ""
